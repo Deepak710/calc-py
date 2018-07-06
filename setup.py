@@ -11,7 +11,7 @@ setuptools.setup(
     description='A Simple Calculator Program to showcase basic python operations',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/example-project",
+    url="https://github.com/Deepak710/calc-py",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",
