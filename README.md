@@ -8,10 +8,10 @@
 1. Run calc.py using the Python IDLE
 
 ### Features:
-1. Can do calculations of **exactly** two numbers, either integers or floats
+1. Can do basic calculations of either integers or floats
 1. Supported calculations
 	* Addition
-	* Suntraction
+	* Subtraction
 	* Multiplication
 	* Division
 	* Remainder (Modulo)
@@ -47,7 +47,9 @@
 	* Bugs
 		1. Random wrong answers
 		1. What bug could be more severe than this, that too in a _**CALCULATOR!!!**_
+* **0.1a1.dev1**
+    * Edited code so that calculations can be made with more than one operation in it.
+    * Bugs
+        1. Still Random wrong answers 
 
-Contact Me:
-
-[Telegram](https://web.telegram.org/#/im?p=@AzorAhoy)
+Contact Me: [Telegram](https://web.telegram.org/#/im?p=@AzorAhoy)

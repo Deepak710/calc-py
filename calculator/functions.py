@@ -5,6 +5,8 @@ import re
 class MyApp(t.Frame):
     def __init__(self, master):
         t.Frame.__init__(self, master)
+        master.title("Calculator")
+        master.geometry("120x175")
         self.grid()
         self.create_widgets()
 
@@ -136,15 +138,24 @@ class MyApp(t.Frame):
         self.text.configure(state='normal')
         n = re.findall(r"(\d\.\d)|(\d)", self.text.get())
         if len(n) > 1:
-            o1 = float(n[0][0]) if not n[0][0] == '' else int(n[0][1])
-            o2 = float(n[1][0]) if not n[1][0] == '' else int(n[1][1])
             op = re.findall(r"[^a-zA-Z0-9.]", self.text.get())
-            op[0] = '**' if op[0] == '^' else op[0]
+            s = str()
+            i = 0
+            for num in n:
+                try:
+                    if op[i]:
+                        s += num[0] if not num[0] == '' else num[1]
+                        s += ' '
+                        s += op[i] if not op[i] == '^' else '**'
+                        s += ' '
+                        i += 1
+                except IndexError:
+                    s += num[0] if not num[0] == '' else num[1]
+                    break
             self.text.delete(0, 'end')
-            self.text.insert(0, str(eval(str(o1) + str(op[0]) + str(o2))))
+            self.text.insert(0, eval(s))
             with open("history.txt", "a") as f:
-                f.write("{0} {1} {2} = {3}".format(str(o1), str(op[0]), str(o2), self.text.get()))
-                f.write('\n')
+                f.write(s + " = " + self.text.get() + '\n')
         else:
             self.text.delete(0, 'end')
         self.text.configure(state='disabled')
@@ -167,12 +178,11 @@ class MyApp(t.Frame):
         try:
             with open("history.txt", "r") as f:
                 for line in f:
-                    li = line.split(" ")
-                    s = str(i) + ". " + str(li[0]) + " " + li[1] + " " + str(li[2]) + " " + li[3] + " " + str(li[4]) + '\n'
+                    s += str(i) + ". " + line + '\n'
                     i += 1
         except FileNotFoundError:
             s = 'Nothing Calculated Thus Far!...'
-        text = t.Text(win, width=35, height=5)
+        text = t.Text(win)
         text.insert(0.0, s)
         text.configure(state='disabled')
         text.pack()
