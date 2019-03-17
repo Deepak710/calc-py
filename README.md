@@ -52,4 +52,4 @@
     * Bugs
         1. Still Random wrong answers 
 
-Contact Me: [Telegram](https://web.telegram.org/#/im?p=@AzorAhoy)
+Contact Me: [Telegram](https://t.me/AzorAhoy)
